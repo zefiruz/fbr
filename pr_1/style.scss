@@ -56,5 +56,5 @@ $dark-bg: #2c3e50;
 }
 
 .btn{
-    @include button($primary)
+    @include button($primary);
 }
