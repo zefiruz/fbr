@@ -1,0 +1,60 @@
+$primary: #3498db;
+$theme: dark;
+$text-muted: #bdc3c7;
+$dark-bg: #2c3e50;
+
+@mixin button($color){
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: $color;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+@mixin flex-column-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.card{
+    padding: 16px;
+
+    @include flex-column-center();
+
+    @if $theme == dark{
+        background: #222;
+        color: white;
+    }
+
+    &__title{
+        font-size: 20px;
+    }
+
+    &__accent{
+        border: 2px solid $primary;
+    }
+
+    &__image{
+        width: 50%;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    &__description {
+        font-size: 14px;
+        color: if($theme == dark, $text-muted, #666);
+    }
+}
+
+.btn{
+    @include button($primary)
+}

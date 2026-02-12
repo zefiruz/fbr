@@ -1,0 +1,39 @@
+.card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  background: #222;
+  color: white;
+}
+.card__title {
+  font-size: 20px;
+}
+.card__accent {
+  border: 2px solid #3498db;
+}
+.card__image {
+  width: 50%;
+  border-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.card__description {
+  font-size: 14px;
+  color: #bdc3c7;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.btn:hover {
+  opacity: 0.8;
+}/*# sourceMappingURL=style.css.map */
