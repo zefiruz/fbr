@@ -1,0 +1,138 @@
+// Переменные для цветов
+$primary-color: #3498db;
+$success-color: #27ae60;
+$danger-color: #e74c3c;
+$bg-color: #f4f7f6;
+$text-dark: #2c3e50;
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+.products-container {
+  min-height: 100vh;
+  background-color: $bg-color;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  .page-header {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      color: $text-dark;
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .add-main-btn {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+      box-shadow: $shadow;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .products-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    // Адаптивная сетка: карточки будут подстраиваться под размер экрана
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+  }
+}
+
+// Стили для карточки (ProductItem)
+.product-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: $shadow;
+  display: flex;
+  flex-direction: column;
+  transition: hover 0.3s;
+
+  &:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  h3 {
+    margin: 0 0 10px 0;
+    color: $text-dark;
+    font-size: 1.25rem;
+  }
+
+  .category {
+    display: inline-block;
+    background: #e1e8ed;
+    color: #607d8b;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    width: fit-content;
+  }
+
+  p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    flex-grow: 1; // Чтобы кнопки всегда были внизу, если текст разной длины
+  }
+
+  .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $text-dark;
+    margin-bottom: 15px;
+    
+    &::after {
+      content: " ₽";
+    }
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    button {
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .edit-btn {
+      background-color: #f1f3f5;
+      color: $text-dark;
+    }
+
+    .delete-btn {
+      background-color: lighten($danger-color, 35%);
+      color: $danger-color;
+    }
+  }
+}

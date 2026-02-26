@@ -1,0 +1,97 @@
+// Переменные для удобства
+$card-bg: #ffffff;
+$text-main: #2c3e50;
+$text-muted: #7f8c8d;
+$accent-color: #3498db;
+$danger-color: #e74c3c;
+$success-color: #27ae60;
+$shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+.product-card {
+  background: $card-bg;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: $shadow;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+    color: $text-main;
+  }
+
+  p {
+    margin: 5px 0;
+    color: $text-muted;
+    font-size: 0.95rem;
+    line-height: 1.4;
+
+    strong {
+      color: $text-main;
+    }
+  }
+
+  .price {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: $accent-color;
+  }
+
+  .card-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+
+    .edit-btn {
+      background-color: #ecf0f1;
+      color: $text-main;
+
+      &:hover {
+        background-color: darken(#ecf0f1, 5%);
+        color: $accent-color;
+      }
+    }
+
+    .delete-btn {
+      background-color: rgba($danger-color, 0.1);
+      color: $danger-color;
+
+      &:hover {
+        background-color: $danger-color;
+        color: white;
+      }
+    }
+  }
+}
+
+// Контейнер-сетка (если еще не добавил в ProductsPage.scss)
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
