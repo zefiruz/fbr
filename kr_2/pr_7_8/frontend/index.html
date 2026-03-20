@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Регистрация</p>
+    <form action="post">
+        <label for="reg-name">Имя</label>
+        <input id="reg-name" type="text" placeholder="Введите имя">
+        <label for="reg-age">Возраст</label>
+        <input id="reg-age" type="number" placeholder="Введите возраст">
+        <label for="reg-password">Пароль</label>
+        <input id="reg-password" type="text" placeholder="Введите пароль">
+        <button onclick="register(event)">Зарегистрироваться</button>
+    </form>
+    <p>Вход</p>
+    <form action="post">
+        <label for="login-name">Имя</label>
+        <input id="login-name" type="text" placeholder="Введите имя">
+        <label for="login-password">Пароль</label>
+        <input id="login-password" type="text" placeholder="Введите пароль">
+        <button onclick="login(event)">Войти</button>
+    </form>
+    <div class="token-block"></div>
+</body>
+<script>
+    async function register(event) {
+        event.preventDefault();
+        const name = document.getElementById('reg-name').value;
+        const age = document.getElementById('reg-age').value;
+        const password = document.getElementById('reg-password').value;
+
+        try {
+            const response = await fetch('http://localhost:3000/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: name,
+                    age: parseInt(age),
+                    password: password
+                })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert(`Регистрация успешна! Добро пожаловать, ${data.username}`);
+                console.log('Зарегистрированный пользователь:', data);
+            } else {
+                alert(`Ошибка регистрации: ${data.error}`);
+            }
+        } catch (error) {
+            alert('Ошибка соединения с сервером');
+            console.error('Ошибка:', error);
+        }
+    }
+
+    async function login(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('login-name').value;
+        const password = document.getElementById('login-password').value;
+
+        try {
+            const response = await fetch('http://localhost:3000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: name,
+                    password: password
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem('accessToken', data.accessToken);
+
+                alert(`Вход выполнен успешно! Добро пожаловать, ${name}`);
+                console.log('Токен доступа:', data.accessToken);
+
+                await getUserInfo();
+            } else {
+                alert(`Ошибка входа: ${data.error}`);
+            }
+        } catch (error) {
+            alert('Ошибка соединения с сервером');
+            console.error('Ошибка:', error);
+        }
+    }
+
+    async function getUserInfo() {
+        const token = localStorage.getItem('accessToken');
+        if (!token) return;
+
+        try {
+            const response = await fetch('http://localhost:3000/api/auth/me', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Информация о пользователе:', data);
+                const tokenBlock = document.querySelector('.token-block');
+                tokenBlock.innerHTML += `Ваш токен: ${token}`;
+            }
+        } catch (error) {
+            console.error('Ошибка получения данных пользователя:', error);
+        }
+    }
+</script>
+
+</html>
