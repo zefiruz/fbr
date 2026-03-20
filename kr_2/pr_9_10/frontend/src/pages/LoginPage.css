@@ -1,0 +1,123 @@
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.auth-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 360px;
+}
+
+.auth-card__header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-card__header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.auth-card__header p {
+    color: #777;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 600;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #4a90e2;
+}
+
+.auth-button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.auth-button:hover {
+    background-color: #357abd;
+}
+
+.auth-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.auth-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.auth-footer a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.message--error {
+    background-color: #fdeaea;
+    color: #d9534f;
+    border: 1px solid #ebccd1;
+}
+
+.message--success {
+    background-color: #eafaf1;
+    color: #2ecc71;
+    border: 1px solid #d4edda;
+}
