@@ -1,0 +1,15 @@
+{
+  "name": "notes-pwa-socketio-push",
+  "version": "1.0.0",
+  "description": "PWA заметки с Socket.IO и Push-уведомлениями",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "generate-vapid": "node -e \"const webPush = require('web-push'); const keys = webPush.generateVAPIDKeys(); console.log('PUBLIC_KEY:', keys.publicKey); console.log('PRIVATE_KEY:', keys.privateKey);\""
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "web-push": "^3.6.6"
+  }
+}
