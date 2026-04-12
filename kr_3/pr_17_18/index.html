@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заметки PWA</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="icons/icon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- App Shell -->
+    <header class="app-header">
+        <h1>Заметки</h1>
+        <nav class="app-nav">
+            <button class="nav-btn active" data-page="home">Главная</button>
+            <button class="nav-btn" data-page="about">О приложении</button>
+        </nav>
+        <div class="push-controls">
+            <button id="subscribe-btn" class="push-btn" title="Включить Push-уведомления">
+                🔔 Включить уведомления
+            </button>
+            <button id="unsubscribe-btn" class="push-btn push-btn-disabled" title="Отключить Push-уведомления" disabled>
+                🔕 Отключить уведомления
+            </button>
+            <div id="push-status" class="push-status"></div>
+        </div>
+    </header>
+    <main id="app-content">
+        <!-- Контент загружается динамически через app.js -->
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
