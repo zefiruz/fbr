@@ -54,8 +54,8 @@ app.get('/api/users/:id', async (req, res) => {
 app.patch('/api/users/:id', async (req, res) => {
     try {
         const user = await User.findOneAndUpdate(
-            { id: req.params.id }, 
-            { ...req.body, updated_at: Math.floor(Date.now() / 1000) }, 
+            { id: req.params.id },
+            { ...req.body, updated_at: Math.floor(Date.now() / 1000) },
             { new: true }
         );
         if (!user) return res.status(404).send('User not found');

@@ -1,0 +1,215 @@
+/* Основные переменные темы через CSS variables */
+:root {
+    --main-dark: #0f172a;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #6366f1;
+    --accent-soft: rgba(99, 102, 241, 0.1);
+    --error: #f43f5e;
+    --error-soft: rgba(244, 63, 94, 0.1);
+    --success: #22c55e;
+}
+
+/* Базовая разметка */
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-dark);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Шапка и Подвал */
+.header,
+.footer {
+    background: rgba(30, 41, 59, 0.5);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.footer {
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.header__inner,
+.footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.brand {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+/* Тулбар и кнопки */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.btn--danger {
+    background: var(--error-soft);
+    border-color: var(--error);
+    color: var(--error);
+}
+
+.btn:hover {
+    filter: brightness(1.2);
+    transform: translateY(-1px);
+}
+
+/* Сетка и карточки продуктов */
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.productRow {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.productImage {
+    width: 100%;
+    height: 160px;
+    border-radius: 8px;
+    background: #0f172a;
+    overflow: hidden;
+}
+
+.productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.productName {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.productCost {
+    color: var(--success);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.productCategory {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.productDescription {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.productActions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Модальное окно */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.modal__header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+.form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.label {
+    font-size: 14px;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input {
+    background: var(--main-dark);
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.input:focus {
+    outline: 2px solid var(--accent);
+    border-color: transparent;
+}
