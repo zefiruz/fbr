@@ -284,8 +284,8 @@ app.get("/api/auth/me", authenticateToken, (req, res) => {
 
 // 21
 
-app.get("/api/users", authMiddleware, 
-  roleMiddleware(["admin"]), 
+app.get("/api/users", authMiddleware,
+  roleMiddleware(["admin"]),
   cacheMiddleware(() => "users:all", USERS_CACHE_TTL),
   async (req, res) => {
     const data = users.map((u) => ({
