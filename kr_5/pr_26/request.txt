@@ -1,0 +1,28 @@
+query GetAllAuthors {
+  authors {
+    id
+    name
+    books {
+      title
+    }
+  }
+}
+
+mutation CreateNewBook {
+  createBook(title: "Крутая книга", authorId: "2") {
+    id
+    title
+    author {
+      name
+    }
+  }
+}
+
+query GetBookById {
+  book(id: "1") {
+    title
+    author {
+      name
+    }
+  }
+}
